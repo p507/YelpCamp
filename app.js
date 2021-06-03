@@ -23,8 +23,9 @@ const campgroundRouts = require('./routs/campgrounds');             //  Campgrou
 const reviewRouts = require('./routs/reviews');                     //  Review Routs
 const userRouts = require('./routs/users')
 const User = require('./models/user');                          //  User Model for DB
-const port = 3005;
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';       //  Both production and development
+// const dbUrl = process.env.DB_URL;                                   //  Only for production
+// const dbUrl = 'mongodb://localhost:27017/yelp-camp';                //  Only for development
 
 mongoose.connect(dbUrl, {       //  Database Connection
     useUnifiedTopology: true,
@@ -164,6 +165,8 @@ app.use((err, req, res, next) => {                              //  Middleware f
     const { message = `Something Went Wrong`, status = 500 } = err;
     res.status(status).render('error', { err });
 })
+
+const port = process.env.PORT || 3005;
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
