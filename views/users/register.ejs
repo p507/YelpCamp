@@ -1,0 +1,43 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row mt-5 mb-5">
+        <div class="col-6 offset-3">
+            <div class="card shadow">
+                <img src="https://res.cloudinary.com/dmaluloab/image/upload/v1622383137/YelpCamp/qvaf36wk1ooyppnmcmxx.jpg"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center text-danger h4 fw-bold">Register New Account</h5>
+                    <form action="/register" method="POST" class="validated-form" novalidate>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" name="username" id="username" required
+                                placeholder="username" autofocus>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" id="email" required placeholder="Email">
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" required
+                                placeholder="Password">
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-success">Register</button>
+                        <p class="text-center h6">
+                        <a href="/login">Already have an account, Log in</a>
+                        </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
