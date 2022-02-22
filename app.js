@@ -24,8 +24,6 @@ const reviewRouts = require('./routs/reviews');                     //  Review R
 const userRouts = require('./routs/users')
 const User = require('./models/user');                          //  User Model for DB
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';       //  Both production and development
-// const dbUrl = process.env.DB_URL;                                   //  Only for production
-// const dbUrl = 'mongodb://localhost:27017/yelp-camp';                //  Only for development
 
 mongoose.connect(dbUrl, {       //  Database Connection
     useUnifiedTopology: true,
@@ -144,13 +142,6 @@ app.use((req, res, next) => {                              //  Middleware for fl
 app.get('/', (req, res) => {
     res.render('home');
 })
-
-app.get('/fakeUser', async (req, res) => {
-    const user = new User({ email: 'avikal@outlook.com', username: 'avikal' });
-    const newUser = await User.register(user, 'Avikal@123')                             //  Creating a hash password (predefined methode in passportLocalMongoose)
-    res.send(newUser);
-})
-
 
 app.use('/', userRouts);                                        //  User Authentication Routs
 app.use('/campgrounds', campgroundRouts);                       //  Campground routs
